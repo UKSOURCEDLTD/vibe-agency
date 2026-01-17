@@ -1,6 +1,6 @@
 runConfig:
   environmentVariables:
-    NEXT_PUBLIC_FIREBASE_API_KEY: "API_KEY_PLACEHOLDER"
+    NEXT_PUBLIC_FIREBASE_API_KEY: "AIzaSyBFVWMzH90k6h7GdL58EtD7WXLtLJ9lkEs"
     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: "uk-sourced-ltd-site.firebaseapp.com"
     NEXT_PUBLIC_FIREBASE_PROJECT_ID: "uk-sourced-ltd-site"
     NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: "uk-sourced-ltd-site.firebasestorage.app"

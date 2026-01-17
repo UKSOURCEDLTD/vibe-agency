@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Loader2, Save, Image as ImageIcon, Edit2 } from 'lucide-react';
+import { Loader2, Image as ImageIcon, Edit2 } from 'lucide-react';
 import Image from 'next/image';
 import MediaPickerModal from '@/components/admin/MediaPickerModal';
 

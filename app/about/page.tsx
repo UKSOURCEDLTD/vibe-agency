@@ -1,5 +1,5 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
+
 import Link from "next/link";
 import DynamicImage from "@/components/DynamicImage";
 import { useState } from "react";
@@ -242,7 +242,7 @@ export default function AboutPage() {
                         <div className="lg:col-span-4">
                             <div className="data-label text-desaturated-teal mb-6">Network_Topology</div>
                             <h2 className="text-4xl font-semibold mb-8">Global Presence</h2>
-                            <p className="text-deep-charcoal/60 mb-12">We maintain active operational nodes in the world's most critical retail territories, ensuring low-latency response and localized expertise.</p>
+                            <p className="text-deep-charcoal/60 mb-12">We maintain active operational nodes in the world&apos;s most critical retail territories, ensuring low-latency response and localized expertise.</p>
                             <div className="space-y-6">
                                 <div className="flex justify-between items-center border-b border-border-subtle pb-4">
                                     <span className="font-mono text-sm">Active Regions</span>

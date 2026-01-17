@@ -10,6 +10,7 @@ import { Loader2 } from 'lucide-react';
 export default function EditBlogPage() {
     const params = useParams();
     const id = params?.id as string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [post, setPost] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 

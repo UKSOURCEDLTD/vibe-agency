@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { collection, getDocs, query, orderBy, where } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
@@ -14,6 +14,7 @@ interface BlogPost {
     category: string;
     readTime: string;
     featuredImage?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     createdAt: any;
 }
 
@@ -60,7 +61,7 @@ export default function BlogPage() {
                             <span className="font-semibold italic">Amazon in 2026</span>
                         </h1>
                         <p className="text-xl text-deep-charcoal/60 max-w-xl">
-                            We're building the next generation of fulfillment strategies. Learn how decentralised networks and smarter routing are changing the game for UK sellers.
+                            We&apos;re building the next generation of fulfillment strategies. Learn how decentralised networks and smarter routing are changing the game for UK sellers.
                         </p>
                         <div className="flex items-center gap-8 pt-6">
                             <div className="flex flex-col">
@@ -80,10 +81,12 @@ export default function BlogPage() {
                     </div>
                     <div className="lg:col-span-5 relative group">
                         <div className="aspect-square bg-white p-4 border border-border-subtle shadow-2xl shadow-black/5 overflow-hidden">
-                            <img
+                            <Image
                                 alt="Modern Abstract Visual"
                                 className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-1000"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM"
+                                width={800}
+                                height={800}
                             />
                         </div>
                         <div className="absolute -top-4 -right-4 w-32 h-32 border-t border-r border-desaturated-teal/30 pointer-events-none"></div>

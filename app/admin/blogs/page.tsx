@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { db } from '@/lib/firebase';
 import { collection, getDocs, deleteDoc, doc, orderBy, query } from 'firebase/firestore';
-import { Plus, Edit2, Trash2, FileText, Loader2, ExternalLink } from 'lucide-react';
+import { Plus, Edit2, Trash2, FileText, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 
 interface BlogPost {
@@ -12,6 +12,7 @@ interface BlogPost {
     title: string;
     status: 'draft' | 'published';
     category: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     createdAt?: any;
     featuredImage?: string;
 }

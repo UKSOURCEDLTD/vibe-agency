@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -17,7 +17,7 @@ export default function ManagementPage() {
                             <span className="font-semibold text-desaturated-teal">Amazon Growth Partner</span>
                         </h1>
                         <p className="text-xl max-w-xl mb-14 text-deep-charcoal/70">
-                            We don't just clear errors; we engineer dominance. UK Sourced Ltd combines elite strategic oversight with relentless operational execution to scale your brand on Amazon.
+                            We don&apos;t just clear errors; we engineer dominance. UK Sourced Ltd combines elite strategic oversight with relentless operational execution to scale your brand on Amazon.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-5">
                             <Link
@@ -202,7 +202,7 @@ export default function ManagementPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold uppercase text-[12px] tracking-widest mb-3">Out-of-Stock Risk</h4>
-                                    <p className="text-sm text-deep-charcoal/50 leading-relaxed">Predictive modeling prevents 'Stock-Out' penalties and protects category rank during high-velocity seasons.</p>
+                                    <p className="text-sm text-deep-charcoal/50 leading-relaxed">Predictive modeling prevents &apos;Stock-Out&apos; penalties and protects category rank during high-velocity seasons.</p>
                                 </div>
                             </div>
                             <div className="md:col-span-3 lg:col-span-2 bento-item flex flex-col justify-center items-center text-center">

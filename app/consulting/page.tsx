@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
+
 "use client";
 
-import { useState } from "react";
-import clsx from "clsx";
 import DynamicImage from "@/components/DynamicImage";
 
 export default function ConsultingPage() {

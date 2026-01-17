@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { collection, query, orderBy, getDocs, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Loader2, Mail, Phone, Calendar } from 'lucide-react';
+import { Loader2, Mail, Phone } from 'lucide-react';
 
 interface Lead {
     id: string;

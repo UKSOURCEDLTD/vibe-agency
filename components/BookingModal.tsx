@@ -20,6 +20,7 @@ export default function BookingModal({
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setMounted(true);
         return () => setMounted(false);
     }, []);

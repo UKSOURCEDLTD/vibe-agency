@@ -18,8 +18,11 @@ interface BlogPost {
     category: string;
     author: string;
     status: 'draft' | 'published';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     publishedAt?: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     createdAt?: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     updatedAt?: any;
 }
 

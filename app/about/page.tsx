@@ -1,7 +1,85 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import DynamicImage from "@/components/DynamicImage";
+import { useState } from "react";
+import BioModal, { TeamMember } from "@/components/BioModal";
+
+const TEAM_MEMBERS: TeamMember[] = [
+    {
+        id: "J.THORNE",
+        name: "Jameson Thorne",
+        role: "Chief Executive / Logistics Lead",
+        imageSlot: "about_team_jameson",
+        imageAlt: "Founder Portrait - Jameson Thorne",
+        fallbackSrc: "https://lh3.googleusercontent.com/aida-public/AB6AXuCqIFsFd_agmGSHxVmqK-v4mdmSqrsYyssWogT_ORWxxJ57pKW1yZofFUQVQAlfhjdjPF6fq1Sl366K8LoKEuvmfw788GC6e4N6wws-MQ7Y8XtHWPHhR7khGkBHzXUoHwW51HafkrEMWQzA0GcmQxXYiIDQ6zUtKAOMLmgGw2e6uM9KqRdIAflDxnUfP0GXznFpfhjv7jkEHq1IqSOwUvb_WP5B5ylE-dY8WBt2D9Ubjk-8E3-UmDuDVc_tXd__B6FuK7iJp187O4-8",
+        bio: "The architect of the UK Sourced methodology. Jameson spent a decade optimizing supply chains for Fortune 500 retail giants before identifying the critical gap in the Amazon ecosystem: a lack of high-fidelity, data-driven partnership for premium brands.",
+        fullBio: [
+            "Jameson Thorne is the architect of the UK Sourced methodology. He spent a decade optimizing supply chains for Fortune 500 retail giants before identifying the critical gap in the Amazon ecosystem: a lack of high-fidelity, data-driven partnership for premium brands that prioritizes brand equity over volume churning.",
+            "Before founding UK Sourced Ltd, Jameson led the European distribution strategy for a leading consumer electronics conglomerate, where he reduced logistical overhead by 22% while increasing delivery speeds. This experience formed the bedrock of our 'Structure First' philosophy.",
+            "He believes that Amazon is not just a marketplace but a rigorous algorithmic environment that rewards precision. His leadership style is defined by this exactness—ensuring that every client account is treated with the same operational discipline as a multinational infrastructure project."
+        ],
+        stats: [
+            { label: "Systems Deployed", value: "142" },
+            { label: "Revenue Mgmt", value: "$40M+" }
+        ],
+        meta: {
+            clearance: "L5_Executive",
+            specialization: "Macro-Logistics",
+            location: "LDN_HQ_Alpha"
+        }
+    },
+    {
+        id: "E.VANCE",
+        name: "Elena Vance",
+        role: "Managing Director / Global Ops",
+        imageSlot: "about_team_elena",
+        imageAlt: "Founder Portrait - Elena Vance",
+        fallbackSrc: "https://lh3.googleusercontent.com/aida-public/AB6AXuCMojOtwkEtJ3ujJcBlUrO3hCCT0a1Jwg9w6ZUJ84WowfJoHcAo8Hd9Fg4ocqFTOl1UK6oh4uBZVRHzLNX0n10Qn-3ESrGcqLV3q1o6F6pRhJbYFAyuqO_rwT0i5f0ZBEK9wRDxFjMsYSCtwoTMlnKyWrVDdEndD2th5smdNulPbSA529k-W2blBFBWFoVGCDgJwukSfNKKlTdGWvoy-MTGBXeoR4YIcQ__spkmIh6F0ADzwO4YmcvgfvIzRJk-r61wbAXBL_bZ1-UC",
+        bio: "Elena oversees the intricate web of our cross-border operations. Her expertise lies in navigating the complex regulatory landscapes of the EU and US markets, ensuring friction-free expansion for our partners.",
+        fullBio: [
+            "Elena Vance oversees the intricate web of our cross-border operations. Her expertise lies in navigating the complex regulatory landscapes of the EU and US markets, ensuring friction-free expansion for our partners. She is the force behind our seamless PAN-EU integration.",
+            "With a background in International Trade Law and Operations Management, Elena builds the 'buffers' that protect our clients from compliance risks. She has successfully negotiated direct carrier partnerships that give UK Sourced clients a 15% margin advantage on transatlantic freight.",
+            "Elena's directive is 'Global Sync'—the idea that a brand's presence should be uniform, compliant, and optimized regardless of the territory. She manages the operational nodes in Berlin and New York, serving as the central nervous system for our international activities."
+        ],
+        stats: [
+            { label: "Markets Active", value: "08" },
+            { label: "Compliance Rate", value: "100%" }
+        ],
+        meta: {
+            clearance: "L4_Director",
+            specialization: "Cross-Border Ops",
+            location: "Roaming_Node"
+        }
+    },
+    {
+        id: "M.CHEN",
+        name: "Marcus Chen",
+        role: "Technical Director / Data Lead",
+        imageSlot: "about_team_marcus",
+        imageAlt: "Founder Portrait - Marcus Chen",
+        fallbackSrc: "https://lh3.googleusercontent.com/aida-public/AB6AXuBzih8pm2YJ03anOC5NkXi19mf3zdR73shJj0bJPMwNrUKqsdW1XRbVZ7mbVbnA7_n7VxV22k3Nhm6g1ELhMEUl3m6pJPPNiLCKWxVXOQ1-PlYF_iE-oRhO_Oye-se_NycH4l7wBLTqLg1Ix2Bbk00P8pu7J15YwsolUR4nKdR2fUfLViV9879WJkXSkMENgl0bJ0XLEz3fV80trfPnATeHX3CSagv1sSlE4xp-r3wXf-TJyWhg2ncgZfNosVh4yMMmKItW2ImKQ9V4",
+        bio: "The mind behind our predictive logic. Marcus leverages advanced data modeling to forecast market trends and inventory needs with uncanny accuracy, turning raw data into actionable growth strategies.",
+        fullBio: [
+            "Marcus Chen is the mind behind our predictive logic. He leverages advanced data modeling to forecast market trends and inventory needs with uncanny accuracy, turning raw data into actionable growth strategies. If Jameson builds the car, Marcus tunes the engine.",
+            "Formerly a Senior Data Analyst for a major fintech firm, Marcus pivoted to e-commerce to solve the 'Black Box' problem of Amazon's A9 algorithm. He developed our proprietary 'Pulse' dashboard, which gives clients real-time visibility into their account health and sales velocity.",
+            "Marcus leads the R&D division, constantly testing new advertising strategies and keyword algorithms. His philosophy is 'Trust the Code, Verify the Human'—ensuring that every machine-learning insight is validated by commercial intuition before deployment."
+        ],
+        stats: [
+            { label: "Data Points", value: "5T+" },
+            { label: "Algorithm Ver", value: "v4.2" }
+        ],
+        meta: {
+            clearance: "L4_Technical",
+            specialization: "Predictive Analytics",
+            location: "Server_Room_B"
+        }
+    }
+];
 
 export default function AboutPage() {
+    const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
     return (
         <div className="min-h-screen bg-soft-bg grid-lines">
             <main>
@@ -21,7 +99,13 @@ export default function AboutPage() {
                     <div className="lg:col-span-5 relative flex items-center justify-center bg-white p-12 overflow-hidden">
                         <div className="absolute inset-0 grid-lines opacity-40"></div>
                         <div className="relative w-full aspect-[4/5] bg-white pedestal-shadow border border-border-subtle flex flex-col items-center justify-center p-12 group">
-                            <img alt="Abstract Crystalline Structure" className="w-full h-auto grayscale opacity-90 transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM" />
+                            <DynamicImage
+                                slot="about_hero_structure"
+                                alt="Abstract Crystalline Structure"
+                                fill
+                                className="object-cover grayscale opacity-90 transition-transform duration-1000 group-hover:scale-105"
+                                fallbackSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM"
+                            />
                             <div className="mt-12 w-32 h-[1px] bg-desaturated-teal/20"></div>
                             <div className="mt-4 data-label text-[10px] opacity-40">Model: STR-01_Growth</div>
                         </div>
@@ -113,43 +197,45 @@ export default function AboutPage() {
                         <div className="hidden md:block h-[1px] flex-grow mx-12 bg-border-subtle mb-4"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div className="space-y-6 group">
-                            <div className="aspect-[3/4] bg-soft-bg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                                <img alt="Founder Portrait" className="w-full h-full object-cover mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqIFsFd_agmGSHxVmqK-v4mdmSqrsYyssWogT_ORWxxJ57pKW1yZofFUQVQAlfhjdjPF6fq1Sl366K8LoKEuvmfw788GC6e4N6wws-MQ7Y8XtHWPHhR7khGkBHzXUoHwW51HafkrEMWQzA0GcmQxXYiIDQ6zUtKAOMLmgGw2e6uM9KqRdIAflDxnUfP0GXznFpfhjv7jkEHq1IqSOwUvb_WP5B5ylE-dY8WBt2D9Ubjk-8E3-UmDuDVc_tXd__B6FuK7iJp187O4-8" />
+                        {TEAM_MEMBERS.map((member) => (
+                            <div key={member.id} className="space-y-6 group cursor-pointer" onClick={() => setSelectedMember(member)}>
+                                <div className="aspect-[3/4] bg-soft-bg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 relative">
+                                    <DynamicImage
+                                        slot={member.imageSlot}
+                                        alt={member.imageAlt}
+                                        fill
+                                        className="object-cover mix-blend-multiply opacity-90"
+                                        fallbackSrc={member.fallbackSrc}
+                                    />
+                                    {/* Hover Overlay Hint */}
+                                    <div className="absolute inset-0 bg-deep-charcoal/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <div className="bg-white/90 backdrop-blur px-4 py-2 text-xs font-mono tracking-widest uppercase">
+                                            View_Dossier
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold">{member.name}</h4>
+                                    <p className="data-label text-[10px] text-deep-charcoal/40 mb-4">{member.role}</p>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedMember(member);
+                                        }}
+                                        className="text-desaturated-teal text-[11px] font-mono font-bold tracking-widest uppercase flex items-center gap-2 group-hover:gap-4 transition-all"
+                                    >
+                                        Bio_Protocol <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div>
-                                <h4 className="text-xl font-semibold">Jameson Thorne</h4>
-                                <p className="data-label text-[10px] text-deep-charcoal/40 mb-4">Chief Executive / Logistics Lead</p>
-                                <Link href="#" className="text-desaturated-teal text-[11px] font-mono font-bold tracking-widest uppercase flex items-center gap-2 group-hover:gap-4 transition-all">
-                                    Bio_Protocol <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="space-y-6 group">
-                            <div className="aspect-[3/4] bg-soft-bg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                                <img alt="Founder Portrait" className="w-full h-full object-cover mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMojOtwkEtJ3ujJcBlUrO3hCCT0a1Jwg9w6ZUJ84WowfJoHcAo8Hd9Fg4ocqFTOl1UK6oh4uBZVRHzLNX0n10Qn-3ESrGcqLV3q1o6F6pRhJbYFAyuqO_rwT0i5f0ZBEK9wRDxFjMsYSCtwoTMlnKyWrVDdEndD2th5smdNulPbSA529k-W2blBFBWFoVGCDgJwukSfNKKlTdGWvoy-MTGBXeoR4YIcQ__spkmIh6F0ADzwO4YmcvgfvIzRJk-r61wbAXBL_bZ1-UC" />
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-semibold">Elena Vance</h4>
-                                <p className="data-label text-[10px] text-deep-charcoal/40 mb-4">Managing Director / Global Ops</p>
-                                <Link href="#" className="text-desaturated-teal text-[11px] font-mono font-bold tracking-widest uppercase flex items-center gap-2 group-hover:gap-4 transition-all">
-                                    Bio_Protocol <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="space-y-6 group">
-                            <div className="aspect-[3/4] bg-soft-bg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                                <img alt="Founder Portrait" className="w-full h-full object-cover mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzih8pm2YJ03anOC5NkXi19mf3zdR73shJj0bJPMwNrUKqsdW1XRbVZ7mbVbnA7_n7VxV22k3Nhm6g1ELhMEUl3m6pJPPNiLCKWxVXOQ1-PlYF_iE-oRhO_Oye-se_NycH4l7wBLTqLg1Ix2Bbk00P8pu7J15YwsolUR4nKdR2fUfLViV9879WJkXSkMENgl0bJ0XLEz3fV80trfPnATeHX3CSagv1sSlE4xp-r3wXf-TJyWhg2ncgZfNosVh4yMMmKItW2ImKQ9V4" />
-                            </div>
-                            <div>
-                                <h4 className="text-xl font-semibold">Marcus Chen</h4>
-                                <p className="data-label text-[10px] text-deep-charcoal/40 mb-4">Technical Director / Data Lead</p>
-                                <Link href="#" className="text-desaturated-teal text-[11px] font-mono font-bold tracking-widest uppercase flex items-center gap-2 group-hover:gap-4 transition-all">
-                                    Bio_Protocol <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                                </Link>
-                            </div>
-                        </div>
+                        ))}
                     </div>
+
+                    <BioModal
+                        isOpen={!!selectedMember}
+                        onClose={() => setSelectedMember(null)}
+                        member={selectedMember}
+                    />
                 </section>
                 <section className="p-8 md:p-24 max-w-screen-2xl mx-auto border-x border-b border-border-subtle bg-white">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

@@ -13,11 +13,11 @@ export default function ManagementPage() {
                             Operational Stream: Full Service Management
                         </div>
                         <h1 className="text-5xl md:text-8xl mb-10 font-light leading-[0.95] tracking-tighter">
-                            Full-Service <br />
-                            <span className="font-semibold text-desaturated-teal">Management Service</span>
+                            Elite <br />
+                            <span className="font-semibold text-desaturated-teal">Amazon Growth Partner</span>
                         </h1>
                         <p className="text-xl max-w-xl mb-14 text-deep-charcoal/70">
-                            A multi-layered infrastructure for retail dominance. We integrate high-fidelity PPC strategies, real-time inventory synchronization, and ironclad brand protection for global marketplace excellence.
+                            We don't just clear errors; we engineer dominance. UK Sourced Ltd combines elite strategic oversight with relentless operational execution to scale your brand on Amazon.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-5">
                             <Link
@@ -89,8 +89,8 @@ export default function ManagementPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="order-2 lg:order-1">
                                 <div className="data-label text-desaturated-teal mb-6">PPC & Advertising</div>
-                                <h2 className="text-5xl mb-8 font-semibold">Advanced Advertising</h2>
-                                <p className="text-lg mb-10 text-deep-charcoal/70">Our proprietary bidding engine operates with micro-second precision, ensuring your budget is deployed against high-intent signals with zero waste and maximum velocity.</p>
+                                <h2 className="text-5xl mb-8 font-semibold">Precision Performance Marketing</h2>
+                                <p className="text-lg mb-10 text-deep-charcoal/70">Stop burning budget. Our proprietary bidding architectures and daily manual optimizations ensure every pound spent acquires a high-value customer. We trade on data, not guesswork.</p>
                                 <div className="grid grid-cols-2 gap-8 mb-12">
                                     <div className="border-l-2 border-desaturated-teal pl-6">
                                         <div className="data-label">Average ROAS</div>
@@ -162,7 +162,7 @@ export default function ManagementPage() {
                         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
                             <div>
                                 <div className="data-label text-desaturated-teal mb-4">Supply Chain</div>
-                                <h2 className="text-5xl font-semibold">Inventory Management</h2>
+                                <h2 className="text-5xl font-semibold">Supply Chain Synchronization</h2>
                             </div>
                             <p className="text-deep-charcoal/60 max-w-sm text-sm">Intelligent distribution logic that keeps your inventory moving across global borders without friction.</p>
                         </div>
@@ -170,8 +170,8 @@ export default function ManagementPage() {
                             <div className="md:col-span-4 lg:col-span-4 bento-item flex flex-col justify-between min-h-[450px]">
                                 <div>
                                     <span className="material-symbols-outlined text-5xl text-desaturated-teal mb-8">hub</span>
-                                    <h3 className="text-3xl font-semibold mb-6">Global Fulfillment</h3>
-                                    <p className="text-deep-charcoal/60 max-w-lg mb-8">Technical bridge connecting ERP systems directly to marketplace APIs for millisecond-accurate stock reflection and automated restocking protocols.</p>
+                                    <h3 className="text-3xl font-semibold mb-6">Seamless Logistics</h3>
+                                    <p className="text-deep-charcoal/60 max-w-lg mb-8">From factory floor to FBA center, we synchronize your stock. Prevent stock-outs, minimize storage fees, and maintain Prime eligibility 100% of the time.</p>
                                 </div>
                                 <div className="space-y-8">
                                     <div className="space-y-3">
@@ -238,8 +238,8 @@ export default function ManagementPage() {
                     <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
                         <div className="lg:col-span-5">
                             <div className="data-label text-desaturated-teal mb-6">Brand Protection</div>
-                            <h2 className="text-5xl mb-8 font-semibold leading-tight">Brand Protection</h2>
-                            <p className="text-lg text-deep-charcoal/70 mb-12">Safeguard your hard-earned equity with automated monitoring and rapid response protocols against unauthorized resellers, counterfeiters, and map violations.</p>
+                            <h2 className="text-5xl mb-8 font-semibold leading-tight">Ironclad Brand Defense</h2>
+                            <p className="text-lg text-deep-charcoal/70 mb-12">Your brand equity is non-negotiable. We deploy monitoring algorithms to instantly detect and remove hijackers, counterfeiters, and unauthorized resellers.</p>
                             <ul className="space-y-10">
                                 <li className="flex items-start gap-5">
                                     <div className="bg-desaturated-teal/10 p-2 rounded">

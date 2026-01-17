@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import clsx from "clsx";
+import DynamicImage from "@/components/DynamicImage";
 
 export default function ConsultingPage() {
     return (
@@ -33,7 +34,13 @@ export default function ConsultingPage() {
                         <div className="relative flex justify-center items-center">
                             <div className="relative w-[500px] h-[500px] bg-white pedestal-shadow rounded-2xl flex items-center justify-center p-1 border border-white group">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-soft-bg to-transparent opacity-50"></div>
-                                <img alt="Glassmorphic Network Grid" className="w-full h-full object-cover rounded-xl opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM" />
+                                <DynamicImage
+                                    slot="consulting_network_grid"
+                                    alt="Glassmorphic Network Grid"
+                                    fill
+                                    className="object-cover rounded-xl opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-110"
+                                    fallbackSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM"
+                                />
                                 <div className="absolute -bottom-10 w-4/5 h-6 bg-deep-charcoal/5 blur-xl rounded-full"></div>
                                 <div className="absolute top-8 left-8 glass-card p-4 rounded-lg space-y-2">
                                     <div className="data-label !text-[8px]">Network Scope</div>

@@ -5,13 +5,24 @@ import { useState } from 'react';
 import Link from 'next/link';
 import BookingModal from '@/components/BookingModal';
 import BookingButton from '@/components/BookingButton';
+import DynamicImage from '@/components/DynamicImage';
 
 export default function Home() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   return (
-    <div className="grid-lines min-h-screen">
-      <section className="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh] max-w-screen-2xl mx-auto">
+    <div className="grid-lines min-h-screen relative">
+      {/* Hero Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <DynamicImage
+          slot="home_hero_bg"
+          alt="Hero Background"
+          fill
+          className="object-cover opacity-5"
+          fallbackSrc="https://placehold.co/1920x1080/FFFFFF/FFFFFF?text=."
+        />
+      </div>
+      <section className="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh] max-w-screen-2xl mx-auto relative">
         <div className="lg:col-span-7 p-8 md:p-24 flex flex-col justify-center border-r border-border-subtle">
           <div className="mb-8 data-label flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-desaturated-teal"></span>
@@ -47,10 +58,12 @@ export default function Home() {
         <div className="lg:col-span-5 relative flex items-center justify-center bg-white p-12 overflow-hidden">
           <div className="absolute inset-0 grid-lines opacity-40"></div>
           <div className="relative w-full aspect-square bg-soft-bg pedestal-shadow border border-white rounded-lg flex items-center justify-center p-8 overflow-hidden group">
-            <img
+            <DynamicImage
+              slot="home_about_img"
               alt="Data Flow"
-              className="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM"
+              fill
+              className="object-cover grayscale opacity-80 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
+              fallbackSrc="https://lh3.googleusercontent.com/aida-public/AB6AXuBfigwmoRZmNFL23ceYUbc9gUxdKZn9BBCPoTJyzLaXcZykpVU-kb7Iz8e5IYp0yv6aUcStpKuvx_rKqFckfTLm0f0aimyPfbpShz1NcKJgAX621uekZG89h-pKbMQsV_0wQI7wc6x-u3fXBatcxSuRm4Z-n9_NU28iTpM-Hiq_1uNi2IZcQrmbX_6GOW7hAojSsnbGGUlgAa0Bl2_dtBlKGnCkufBRAQv4MQoS00fsXR-TFSpeWLHlF_9uC-xBB0xwD9pKcqzv2myM"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">

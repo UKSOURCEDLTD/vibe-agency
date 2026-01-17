@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import clsx from "clsx";
+import BookingModal from "./BookingModal";
+import BookingButton from "./BookingButton";
 
 export default function Header() {
     const pathname = usePathname();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
     const links = [
         { href: "/wholesale", label: "Wholesale" },
@@ -26,7 +31,7 @@ export default function Header() {
                         Amazon Premier Partner
                     </span>
                 </Link>
-                <nav className="hidden md:flex gap-8 lg:gap-12 text-[12px] font-medium tracking-widest uppercase">
+                <nav className="hidden md:flex gap-8 lg:gap-10 text-[12px] font-medium tracking-widest uppercase items-center">
                     {links.map((link) => (
                         <Link
                             key={link.href}
@@ -41,12 +46,62 @@ export default function Header() {
                             {link.label}
                         </Link>
                     ))}
+                    <BookingButton
+                        onClick={() => setIsBookingModalOpen(true)}
+                        size="sm"
+                    />
                 </nav>
-                {/* Mobile Menu Placeholder (can be expanded later) */}
-                <div className="md:hidden">
-                    <span className="text-desaturated-teal font-mono text-xs">MENU</span>
-                </div>
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden flex flex-col gap-1.5 w-8 h-8 items-center justify-center"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    <span className={clsx("w-6 h-0.5 bg-deep-charcoal transition-all", mobileMenuOpen && "rotate-45 translate-y-2")}></span>
+                    <span className={clsx("w-6 h-0.5 bg-deep-charcoal transition-all", mobileMenuOpen && "opacity-0")}></span>
+                    <span className={clsx("w-6 h-0.5 bg-deep-charcoal transition-all", mobileMenuOpen && "-rotate-45 -translate-y-2")}></span>
+                </button>
             </div>
+
+            {/* Mobile Menu Dropdown */}
+            <div
+                className={clsx(
+                    "md:hidden absolute left-0 right-0 top-full bg-white border-b border-border-subtle transition-all duration-300 overflow-hidden",
+                    mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                )}
+            >
+                <nav className="flex flex-col p-8 gap-6">
+                    {links.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={clsx(
+                                "text-sm font-medium tracking-widest uppercase transition-colors py-2 border-b border-border-subtle",
+                                pathname === link.href
+                                    ? "text-desaturated-teal font-semibold"
+                                    : "text-deep-charcoal hover:text-desaturated-teal"
+                            )}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                    <button
+                        onClick={() => {
+                            setMobileMenuOpen(false);
+                            setIsBookingModalOpen(true);
+                        }}
+                        className="bg-desaturated-teal text-white px-8 py-4 font-semibold rounded-sm uppercase tracking-widest text-xs mt-4 hover:opacity-90 transition-all"
+                    >
+                        📅 Book Discovery Call
+                    </button>
+                </nav>
+            </div>
+
+            <BookingModal
+                isOpen={isBookingModalOpen}
+                onClose={() => setIsBookingModalOpen(false)}
+            />
         </header>
     );
 }

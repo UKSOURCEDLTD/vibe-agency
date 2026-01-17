@@ -1,7 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
+import BookingModal from '@/components/BookingModal';
+import BookingButton from '@/components/BookingButton';
 
 export default function Home() {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   return (
     <div className="grid-lines min-h-screen">
       <section className="grid grid-cols-1 lg:grid-cols-12 min-h-[85vh] max-w-screen-2xl mx-auto">
@@ -22,9 +29,10 @@ export default function Home() {
             scale brands within the ecosystem.
           </p>
           <div className="flex flex-col sm:flex-row gap-5">
+            <BookingButton onClick={() => setIsBookingModalOpen(true)} />
             <Link
               href="/contact"
-              className="bg-desaturated-teal text-white px-12 py-5 font-semibold hover:opacity-90 transition-all text-center rounded-sm shadow-lg shadow-desaturated-teal/10 uppercase tracking-widest text-xs"
+              className="border border-deep-charcoal/20 px-12 py-5 font-semibold hover:bg-deep-charcoal hover:text-white transition-all text-center rounded-sm uppercase tracking-widest text-xs"
             >
               Get In Touch
             </Link>
@@ -181,6 +189,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </div>
   );
 }

@@ -1,42 +1,29 @@
 # Git Setup Instructions
 
-Since `git` is not configured in this terminal environment, please run the following commands in your own terminal (PowerShell or Command Prompt) to push the code to your repository.
+I have **successfully installed Git** and **committed your code** locally!
 
-### 1. Initialize Repository
-Navigate to the project folder:
-```powershell
-cd "c:\Users\Luke Needham\Documents\uk sourced site\vibe-agency"
-```
+### Final Step: Push to Cloud
+You just need to connect your repository and push the code.
 
-Initialize Git:
-```powershell
-git init
-```
-
-### 2. Configure Ignore Files
-Ensure `.gitignore` exists (I have already checked `.dockerignore` and created `.gcloudignore`, git will generally use `.gitignore` but we should make sure we don't commit `node_modules`).
-Create/Update `.gitignore` if needed:
-```powershell
-echo "node_modules" >> .gitignore
-echo ".next" >> .gitignore
-echo ".env" >> .gitignore
-```
-
-### 3. Commit Code
-Stage and commit all files:
-```powershell
-git add .
-git commit -m "Initial commit: UK Sourced Ltd Vibe Agency"
-```
-
-### 4. Push to Remote
-Replace `<YOUR_REPO_URL>` with your actual Git repository URL (e.g., from GitHub).
+Run these 3 commands in your terminal:
 
 ```powershell
+# 1. Add your repository URL (Replace with your actual URL)
 git remote add origin <YOUR_REPO_URL>
+
+# 2. Rename branch to main (Standard practice)
 git branch -M main
+
+# 3. Push the code
 git push -u origin main
 ```
+
+### Next: Deploy via Cloud Run
+1. Go to **Google Cloud Console > Cloud Run**.
+2. Click **Create Service**.
+3. Select **"Continuously deploy new revisions from a source repository"**.
+4. Connect your repo.
+
 
 ### 5. Deploy via Cloud Run (Console)
 Once the code is in Git:
